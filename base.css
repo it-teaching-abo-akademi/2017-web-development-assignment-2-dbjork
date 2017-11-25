@@ -1,0 +1,35 @@
+* {
+	box-sizing:border-box;
+}
+body * {
+	box-sizing:border-box; 
+	font-family:Verdana,Geneva,sans-serif;
+	font-size:12pt;
+}
+button {
+	padding: 7px 25px;
+	color:white;
+	background-color:#008CBA;
+	border-radius;6px;
+}
+.label {
+	margin-right:2em;
+	min-width:15.5ch;
+}
+.vflex {
+	display:flex;
+	flex-direction:column;
+}
+.hflex {
+	display:flex;
+	flex-direction:row;
+	align-items:baseline;
+}
+.fullwidth {
+	width:100%;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #a0a0a0;
+  font-style:italic;
+}

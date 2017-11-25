@@ -1,0 +1,66 @@
+body {
+	margin:2em;
+}
+div {
+	margin-top:1em;
+}
+#search {
+	margin-left:18.6ch;
+	margin-top:1em;
+}
+#history {
+	margin-left:1em;
+	margin-top:0px;
+	border:1px solid black;
+	padding-left:2em;
+	padding-right:2em;
+}
+.hitem {
+	margin:0.3em;
+}
+.tableRow {
+	display:flex;
+	flex-direction:row;
+	align-items:stretch;
+	border:1pt solid black;
+	width:100%;
+	margin:0px;
+	padding:0px;
+}
+.tablecell {
+	margin:0px;
+	flex-grow:1;
+	padding:1em 1em 1em 1em;
+	border-style:solid;
+	border-width:0.5px;
+}
+.col1 {
+	width:60%;
+}
+.col2 {
+       width:20%;
+}
+.col3 { 
+	width:20%;
+}
+
+#coordTable {
+	width:62%;
+	margin:0px auto;
+	margin-top:2em;
+
+}
+
+#header {
+	background-color:#006a8d;
+	color:#fafafa;
+}
+.error {
+	border:5px solid red;
+}
+.map {
+	width:70%;
+	height:50em;
+	margin:auto;
+	padding-top:2em;
+}

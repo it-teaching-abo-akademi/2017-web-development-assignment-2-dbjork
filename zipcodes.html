@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="base.css">
+		<link rel="stylesheet" href="zipcodes.css">
+		<script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+		<script src="zipcodes.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZwdb4bdUukJOXBJecEXDj3CySYo-tDgQ&callback=createMap" async defer></script>
+		<title>Zip Code Locator</title>
+	</head>
+	<body>
+		<div class="hflex">
+			<div class="vflex">
+				<div class="hflex">
+					<div class="label">Select your country</div>
+					<select id="countries">
+						<option value="none">please select</option>
+						<option value="FI">Finland</option>
+						<option value="SE">Sweden</option>
+						<option value="FR">France</option>
+						<option value="DE">Germany</option>
+					</select>
+				</div>
+				<div class="hflex">
+					<div class="label">ZIP Code</div>
+					<input type="text" id="zipcode" placeholder="enter zipcode here">
+				</div>
+				<button id="search">Search</button>
+			</div>
+			<div id="history" class="vflex">
+				<div >
+					<div><p class="hitem">History of the last 10 searches</p></div>
+				</div>
+				<div id="hItems" class="vflex">
+				</div>
+			</div>
+		</div>
+		<div id="coordTable" class="table">
+			<div id="header" class="tableRow">
+				<div class="tablecell col1">Place name</div>
+				<div class="tablecell col2">Longitude</div>
+				<div class="tablecell col3">Latitude</div>
+			</div>
+		</div>
+		<div id="googleMap" class="map">
+		</div>
+	</body>
+</html>

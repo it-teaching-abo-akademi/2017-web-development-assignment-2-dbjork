@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="banking.css">
+		<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.8.0/dist/barcodes/JsBarcode.code128.min.js" type="text/javascript"></script>
+		<script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+		<script src="banking.js" type="text/javascript" ></script>
+	</head>
+	<body>
+		<div id="form" class="hflex fullwidth">
+			<div class="vflex fullwidth" >
+				<div class="hflex">
+					<div class="label">
+						<p>Virtual Bar Code</p>
+					</div>
+					<input id="vcField" type="text" placeholder="enter the virtual code here">
+				</div>
+				<div class="hflex">
+					<button id="decodeBtn">Decode</button>
+					<button id="toggleBtn">Hide</button>
+				</div>
+			</div>
+		</div>
+		<div id="infosec" class="vflex">
+			<div class="hflex">
+				<div class="label">
+					<p>Payee's IBAN</p>
+				</div>
+				<div class="dispField">
+					<p id="iban"></p> 
+				</div>
+				<div class="label">
+					<p>Amount to be Paid</p>
+				</div>
+				<div class="dispField">
+					<p id="amount"></p> 
+				</div>
+			</div>
+			<div class="hflex">
+				<div class="label">
+					<p>Payment Reference</p>
+				</div>
+				<div class="dispField">
+					<p id="reference" ></p>
+				</div>
+				<div class="label">
+					<p>Due date</p>
+				</div>
+				<div class="dispField">
+					<p id="dueDate" ></p>
+				</div>
+			</div>
+			<div id="bcrow" class="fullwidth">
+				<svg id="barcode"></svg>
+			</div>
+		</div>
+	</body>
+</html>

@@ -2,34 +2,58 @@
 	box-sizing:border-box;
 }
 body * {
-	box-sizing:border-box; 
+	box-sizing:border-box; 	/* Due to GitHub Pages...*/
 	font-family:Verdana,Geneva,sans-serif;
 	font-size:12pt;
 }
-button {
+button { /*blue buttons*/
 	padding: 7px 25px;
 	color:white;
 	background-color:#008CBA;
 	border-radius;6px;
 }
-.label {
+button:disabled { /*gray buttons when disabled */
+	background-color:#555555;
+}
+.label { /* divs as labels, 
+	  * suitable margin to
+	  * the input element
+	  * align nicely if different
+	  * text length */
 	margin-right:2em;
 	min-width:15.5ch;
 }
-.vflex {
+.vflex { /* vertical flexbox */
 	display:flex;
 	flex-direction:column;
 }
-.hflex {
+.hflex { /*horizontal flexbox */
 	display:flex;
 	flex-direction:row;
-	align-items:baseline;
+	align-items:baseline; 
 }
 .fullwidth {
 	width:100%;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  /* Style for the input placeholders */
   color: #a0a0a0;
   font-style:italic;
+}
+
+.map { /* Google map dimensions */
+	width:70%;
+	height:50em;
+	margin:auto; /* center */
+	margin-top:2em;
+	padding-top:2em;
+}
+
+.error { /* displays on error */
+	margin-top:2em;
+	text-align:center;
+	border:8px solid red;
+	padding:8px;
+	color:red;
 }

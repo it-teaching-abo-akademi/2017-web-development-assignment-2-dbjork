@@ -1,19 +1,14 @@
- * {
-	box-sizing:border-box;
-}
-body * {
-	box-sizing:border-box; 
-	font-family:Verdana,Geneva,sans-serif;
-	font-size:12pt;
-}
-
-#form {
+#form { 
 	width:84%;
 	margin-left:8%
 }
 
-#infosec {
+#infosec { /* 'Information section' */
 	width:84%;
+	/* Needs a minimum width
+	 * so that the rather long
+	 * data does not float outside
+	 * of the box. */
 	min-width:720px;
 	margin-right:8%;
 	margin-left:8%;
@@ -21,52 +16,46 @@ body * {
 	padding-right:1em;
 	border:2px solid black;
 }
-
-button {
-	padding: 7px 25px;
-	color:white;
-	background-color:#008CBA;
-	border-radius;6px;
-}
-.label {
-	margin-right:2em;
-	min-width:15.5ch;
-}
-.vflex {
-	display:flex;
-	flex-direction:column;
-}
-.hflex {
-	display:flex;
-	flex-direction:row;
-	align-items:baseline;
-}
-.fullwidth {
-	width:100%;
-}
-#vcField {
+#vcField { 
+	/* Let the field for the
+	 * virtual bar code display
+	 * all characters if possible */
 	width:54ch;
 }
-.dispField {
+.dispField { 
+	/* Reasonable widths for
+	 * the data fields */
 	min-width:20ch;
 	min-height:2em;
 	margin-right:2em;
+	flex-grow:2;
+}
+.label {
+	flex-grow:1:
 }
 #bcrow {
+	/* Barcode container*/
 	margin:auto;
 	width:140mm;
 }
 #barcode {
-	min-width:70mm !important;
-	max-width:105mm;
-	width:105mm !important;
-	min-height:10mm !important;
-	max-height:12.5mm !important;
-	margin-left:15mm;
-	padding:0px 0px 5mm 0px;
+	/* width and height
+	 * according to banking 
+	 * specs. */
+	min-width:85; 
+	max-width:115mm;
+	width:115mm !important;
+	min-height:15mm ;
+	max-height:17.5mm !important;
+	/* For some reason we need
+	 * a margin to the left
+	 * to get the barcode centered */
+	margin-left:10mm;
+	margin-bottom:5mm;
 }
 
-#decodeBtn {
+/* Place the buttons according to assignment */
+#decodeBtn { 
 	margin-left:18.7ch;
 	margin-bottom:1em;
 }
@@ -74,8 +63,4 @@ button {
 	margin-right:0px;
 	margin-left:auto;
 
-}
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #a0a0a0;
-  font-style:italic;
 }

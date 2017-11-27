@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<!-- Written as exercise 2, assignment 2 for the course Development of Interactive Web Applications 
+		     Åbo Akademi fall 2017 by Dan Björkgren.
+		     Search locations corresponding to zip codes in Finland, Sweden, France and Germany 
+		--> 
 		<link rel="stylesheet" href="base.css">
 		<link rel="stylesheet" href="zipcodes.css">
+		<!-- Uses jQuery and Google Maps libraries/API:s -->
 		<script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+		<script src="maps_common.js"></script>
 		<script src="zipcodes.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZwdb4bdUukJOXBJecEXDj3CySYo-tDgQ&callback=createMap" async defer></script>
 		<title>Zip Code Locator</title>
 	</head>
 	<body>
-		<div class="hflex">
-			<div class="vflex">
+		
+		<!-- Row of primary controls, dropdown for selecting country
+		     input for entering zip code and a history box with 10 
+			 recent searches -->
+		<div class="hflex fullwidth">
+			<div class="vflex form">
 				<div class="hflex">
 					<div class="label">Select your country</div>
 					<select id="countries">
@@ -29,12 +39,13 @@
 			</div>
 			<div id="history" class="vflex">
 				<div >
-					<div><p class="hitem">History of the last 10 searches</p></div>
+					<div><p class="hitem hitem-header">History of the last 10 searches</p></div>
 				</div>
 				<div id="hItems" class="vflex">
 				</div>
 			</div>
 		</div>
+		<!-- Table for search results in the form | Location name | Longitude | Latitude | -->
 		<div id="coordTable" class="table">
 			<div id="header" class="tableRow">
 				<div class="tablecell col1">Place name</div>
@@ -42,6 +53,7 @@
 				<div class="tablecell col3">Latitude</div>
 			</div>
 		</div>
+		<!-- Map -->
 		<div id="googleMap" class="map">
 		</div>
 	</body>

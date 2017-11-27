@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<!-- Created by Dan Björkgren as assignment 2, exercise 1 
+		    for the course Develompemnt of Interactive Web Application, fall 2017.
+		-->
 		<link rel="stylesheet" href="base.css">
 		<link rel="stylesheet" href="banking.css">
+		<!-- uses jQuery, and JsBarCode (https://github.com/lindell/JsBarcode) -->
 		<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.8.0/dist/barcodes/JsBarcode.code128.min.js" type="text/javascript"></script>
 		<script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
 		<script src="banking.js" type="text/javascript" ></script>
 	</head>
 	<body>
-		<div id="form" class="hflex fullwidth">
-			<div class="vflex fullwidth" >
-				<div class="hflex">
+		<!-- 'form' part, a div to hold the input and buttons -->
+		<div id="form" class="hflex">
+			<div class="vflex " >
+				<div class="hflex ">
 					<div class="label">
 						<p>Virtual Bar Code</p>
 					</div>
@@ -22,6 +27,9 @@
 				</div>
 			</div>
 		</div>
+		<!-- information section displays the various parsed parts of the
+		     virtual bar code along with the generated barcode 
+		-->
 		<div id="infosec" class="vflex">
 			<div class="hflex">
 				<div class="label">

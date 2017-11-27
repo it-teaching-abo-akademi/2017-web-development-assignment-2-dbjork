@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Written by Dan Björkgren as exercise 3 for assignment 2 fall 2017 version of Development of Interactive Web Applications Åbo Akademi -->
+		<meta charset="utf-8"/> <!-- for the umlauts -->
+		<!-- Uses jQuery and Google Maps javascript libraries/APIs -->
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script src="busroutes.js" type="text/javascript"></script>
+		<script src="maps_common.js" type="text/javascript"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZwdb4bdUukJOXBJecEXDj3CySYo-tDgQ&callback=createTurkuMap" async defer></script>
+		<link rel="stylesheet" href="base.css">
+		<link rel="stylesheet" href="busroutes.css">
+		<title>Föli busroutes</title>
+	</head>
+	<body>
+		<div class="hflex fullwidth">
+			<div class="label">Select Bus Line</div>
+			<select id="routeSel">
+				<option id="optNone" value="none">Please choose a route</option>
+			</select>
+		</div>
+		<div id="btnRow" class="hflex fullwidth" >
+			<button id="busesBtn">Show Buses</button>
+			<button id="refreshBtn">Refresh</button>
+			<button id="routeBtn">Show Route</button>
+		</div>
+		<div id="msg" class="fullwidth"></div>
+		<div id="googleMap" class="map"></div>
+	</body>
+</html>

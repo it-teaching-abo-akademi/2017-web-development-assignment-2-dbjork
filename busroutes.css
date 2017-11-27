@@ -1,0 +1,19 @@
+body {
+	padding:2em;
+}
+
+#btnRow { /* justify these buttons 
+	   * evenly across the page */
+	justify-content: space-between; 
+	padding:1em 18.5ch 1em 18.5ch;
+	margin-bottom:2em;
+	}
+#msg {
+	text-align:center;
+	width:70%;
+	margin:auto;
+}
+.hasMessage {
+	border:2px solid blue;
+	padding:2em;
+}

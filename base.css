@@ -15,6 +15,13 @@ button { /*blue buttons*/
 button:disabled { /*gray buttons when disabled */
 	background-color:#555555;
 }
+button:focus {
+	/* Remove the ugly blue
+	 * frame around the button
+	 * when selected. */
+	outline:none;
+}
+
 .label { /* divs as labels, 
 	  * suitable margin to
 	  * the input element

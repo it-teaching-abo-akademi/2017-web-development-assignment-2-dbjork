@@ -32,15 +32,17 @@ function validate() { // Triggered whenever a route is selected
             routePath.setMap(null)
         };
         clearResult();
-	clearMessage();
+        clearMessage();
     }
     lastRoute = $("#routeSel").val();
 
 }
-function clearMessage(){
-        $('#msg').html('');
-        $("#msg").removeClass("hasMessage");
+
+function clearMessage() {
+    $('#msg').html('');
+    $("#msg").removeClass("hasMessage");
 }
+
 function showRoute() { // Triggered on Show Route button
     var route = $("#routeSel").val();
     if (routePath) { // remove any old polygon
@@ -53,7 +55,7 @@ function showRoute() { // Triggered on Show Route button
 
 function fetchTrips(route) {
     //Fetch trips for this route, call parseTrips on success
-    var url = "http://data.foli.fi/gtfs/trips/route/" + route;
+    var url = "https://data.foli.fi/gtfs/trips/route/" + route;
     $.ajax({
         url: url,
         cache: false,
@@ -72,7 +74,7 @@ function fetchRoutes() {
     // Called on initial load to fill the dropdown.
     // calls parseRoutes on success.
     $.ajax({
-        url: "http://data.foli.fi/gtfs/routes",
+        url: "https://data.foli.fi/gtfs/routes",
         cache: true,
         dataType: "json",
         type: "GET",
@@ -90,7 +92,7 @@ function fetchCoordinates(shape_id) {
     // Fetches the shapes (coordinate array) for this
     // shape_id. Calls createMapPath upon success.
     $.ajax({
-        url: "http://data.foli.fi/gtfs/shapes/" + shape_id,
+        url: "https://data.foli.fi/gtfs/shapes/" + shape_id,
         cache: true,
         dataType: "json",
         type: "GET",
@@ -136,11 +138,34 @@ function parseTrips(result, success, err) {
     var shape_ids = result.map(function(el) {
         return el.shape_id;
     });
-    shape_id = shape_ids[Math.floor((Math.random() * shape_ids.length) + 1)];
+    var shape_id = findMostCommon(shape_ids);
     // Fetch the coordinates for the polygon
     // (Asynchronously)
+    if (shape_id === null) {
+	setMessage("There are no coordinates defined for this route");
+    };
     fetchCoordinates(shape_id);
 }
+
+function findMostCommon(arr) {
+    if (arr.length == 0) return null;
+    var map = {};
+    var max = arr[0],
+        maxcount = 1;
+    for (var i = 0; i < arr.length; i++) {
+        var elem = arr[i];
+        if (map[elem] == null)
+            map[elem] = 1;
+        else
+            map[elem]++;
+        if (map[elem] > maxcount) {
+            max = elem;
+            maxcount = map[elem];
+        }
+    }
+    return max;
+}
+
 
 function displayError(result, success, error) {
     // Rudimentary error handling.
@@ -179,7 +204,7 @@ function showBuses() {
     // (All buses are returned in the response)
     // Calls filterBuses on success.
     $.ajax({
-        url: "http://data.foli.fi/siri/vm",
+        url: "https://data.foli.fi/siri/vm",
         cache: false,
         dataType: "json",
         type: "GET",
@@ -215,13 +240,16 @@ function filterBuses(result, success) {
         }
     });
     if (markers.length === 0) {
-        $('#msg').html("No vehicles are assigned to this route at the moment");
-        $("#msg").addClass("hasMessage");
+	    setMessage("No vehicles are assigned to this route at the moment");
     } else {
-	    clearMessage();
+        clearMessage();
     }
 
 
+}
+function setMessage(msg){
+        $('#msg').html(msg);
+        $("#msg").addClass("hasMessage");
 }
 
 function clearResult() {

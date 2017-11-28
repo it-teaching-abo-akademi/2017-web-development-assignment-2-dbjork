@@ -7,17 +7,53 @@
 
 var routePath; // route polygon if calculated and drawn
 var lastRoute; // previous route, used to recognize change.
+var FoliURL; //the url to foli data
 
 $(function() { //onLoad
-    fetchRoutes(); //fetch available routes and fill the dropdown
+    getDataSets(); //Get the base url for the foli datasets
     // initialize listeners.
     $("#routeBtn").click(showRoute);
     $("#busesBtn").click(showBuses);
     $("#refreshBtn").click(refresh);
     $("#routeSel").change(validate);
     // Initialize UI state
+    var stop = false;
+    window.setTimeout(function() {
+        //Wait for seven seconds,
+        // If we have no FoliURL at that
+        // point then something is wrong
+        stop = true;
+        if (!(FoliURL)) {
+            displayError("The Föli database does not respond, try again later");
+        }
+    }, 7000);
     validate();
 });
+
+function getDataSets() {
+    //Fetch latest dataset for foli, call parseDataset on success
+    var url = "https://data.foli.fi/gtfs/";
+    $.ajax({
+        url: url,
+        cache: true,
+        dataType: "json",
+        type: "GET",
+        success: function(result, success) {
+            parseDataset(result, success);
+        },
+        error: function(result, err) {
+            displayError(result, err)
+        }
+    });
+}
+
+function parseDataset(result, success) {
+    FoliURL = "https://"+result.host + result.gtfspath.replace(/\\/, '') + "/" + result.latest + "/";
+    // Needs to call validate here since you can't loop 
+    // while waiting for the ajax response.
+    fetchRoutes(); //fetch available routes and fill the dropdown
+
+}
 
 function validate() { // Triggered whenever a route is selected
     // disable buttons if no route is selected
@@ -55,7 +91,7 @@ function showRoute() { // Triggered on Show Route button
 
 function fetchTrips(route) {
     //Fetch trips for this route, call parseTrips on success
-    var url = "https://data.foli.fi/gtfs/trips/route/" + route;
+    var url = FoliURL + "trips/route/" + route;
     $.ajax({
         url: url,
         cache: false,
@@ -74,7 +110,7 @@ function fetchRoutes() {
     // Called on initial load to fill the dropdown.
     // calls parseRoutes on success.
     $.ajax({
-        url: "https://data.foli.fi/gtfs/routes",
+        url: FoliURL + "routes",
         cache: true,
         dataType: "json",
         type: "GET",
@@ -92,7 +128,7 @@ function fetchCoordinates(shape_id) {
     // Fetches the shapes (coordinate array) for this
     // shape_id. Calls createMapPath upon success.
     $.ajax({
-        url: "https://data.foli.fi/gtfs/shapes/" + shape_id,
+        url: FoliURL + "shapes/" + shape_id,
         cache: true,
         dataType: "json",
         type: "GET",
@@ -142,7 +178,7 @@ function parseTrips(result, success, err) {
     // Fetch the coordinates for the polygon
     // (Asynchronously)
     if (shape_id === null) {
-	setMessage("There are no coordinates defined for this route");
+        setMessage("There are no coordinates defined for this route");
     };
     fetchCoordinates(shape_id);
 }
@@ -240,16 +276,17 @@ function filterBuses(result, success) {
         }
     });
     if (markers.length === 0) {
-	    setMessage("No vehicles are assigned to this route at the moment");
+        setMessage("No vehicles are assigned to this route at the moment");
     } else {
         clearMessage();
     }
 
 
 }
-function setMessage(msg){
-        $('#msg').html(msg);
-        $("#msg").addClass("hasMessage");
+
+function setMessage(msg) {
+    $('#msg').html(msg);
+    $("#msg").addClass("hasMessage");
 }
 
 function clearResult() {

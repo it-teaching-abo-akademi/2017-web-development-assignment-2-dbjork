@@ -17,12 +17,10 @@ $(function() { //onLoad
     $("#refreshBtn").click(refresh);
     $("#routeSel").change(validate);
     // Initialize UI state
-    var stop = false;
     window.setTimeout(function() {
         //Wait for seven seconds,
         // If we have no FoliURL at that
         // point then something is wrong
-        stop = true;
         if (!(FoliURL)) {
             displayError("The Föli database does not respond, try again later");
         }

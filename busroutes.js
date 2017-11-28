@@ -73,6 +73,12 @@ function fetchTrips(route) {
 function fetchRoutes() {
     // Called on initial load to fill the dropdown.
     // calls parseRoutes on success.
+	
+/* experimental code */
+$(document).ajaxSuccess(function(event, request, settings) {
+    var test=1; //breakpoint 
+});	
+/*experiment end */
     $.ajax({
         url: "https://data.foli.fi/gtfs/routes",
         cache: true,

@@ -16,7 +16,7 @@ $(function() {
 
 function search() {
     /* Call zippopotam.us for the country and zipcode defined. */
-    var zipReqString = "http://api.zippopotam.us/" + $("#countries").val() + "/" + $("#zipcode").val();
+    var zipReqString = "https://api.zippopotam.us/" + $("#countries").val() + "/" + $("#zipcode").val();
     $.ajax({
         url: zipReqString,
         cache: false,

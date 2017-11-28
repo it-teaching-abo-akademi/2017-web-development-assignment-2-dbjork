@@ -75,7 +75,7 @@ function fetchRoutes() {
     // calls parseRoutes on success.
 	
 /* experimental code */
-$(document).ajaxSuccess(function(event, request, settings) {
+$(document).ajaxSend(function(event, request, settings) {
     var test=1; //breakpoint 
 });	
 /*experiment end */

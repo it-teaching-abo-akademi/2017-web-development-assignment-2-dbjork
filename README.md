@@ -31,6 +31,6 @@ This app will show you the Turku region public transport's routes and vehicles.
 
 Choose from the dropdown the route you want to display and press "Show Route". This will show you the route as a red plygon on the map.
 
-You can also show where the vehicles pertinent the chosen route are located (calculated "real time") by pressing "Show Buses".
+You can also show where the vehicles pertinent to the chosen route are located (calculated "real time") by pressing "Show Buses".
 
 Link to live page: https://it-teaching-abo-akademi.github.io/2017-web-development-assignment-2-dbjork/busroutes.html
